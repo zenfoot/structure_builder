@@ -104,11 +104,11 @@ DIRECTORY_STRUCTURE = [
 
 def create_file_structure(base_path: str, structure: List[str]) -> None:
     """Creates the directory and file structure based on the provided list."""
-    base_path = Path(base_path).resolve()
+    base_path = Path(base_path)
     for path_string in structure:
         current_path = base_path / path_string
         logger.info(f"Processing: {current_path}")
-        if path_string.endswith("/"):
+        if current_path.suffix == "":
             create_directory(current_path)
         else:
             create_file(current_path)
@@ -117,9 +117,7 @@ def create_directory(dir_path: Path) -> None:
     """Creates a directory if it doesn't exist."""
     try:
         dir_path.mkdir(parents=True, exist_ok=True)
-        logger.info(f"Directory ensured: {dir_path}")
-    except PermissionError:
-        logger.error(f"Permission denied while creating directory {dir_path}")
+        logger.info(f"Directory created: {dir_path}")
     except Exception as e:
         logger.error(f"Error creating directory {dir_path}: {e}")
 
@@ -129,7 +127,7 @@ def create_file(file_path: Path) -> None:
         file_path.parent.mkdir(parents=True, exist_ok=True)
         if not file_path.exists():
             file_path.touch()
-            logger.info(f"Created file: {file_path}")
+            logger.info(f"File created: {file_path}")
         else:
             logger.info(f"File already exists: {file_path}")
     except Exception as e:
