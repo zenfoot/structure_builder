@@ -1,0 +1,135 @@
+import os
+
+def create_file(path, content=""):
+    with open(path, 'w') as f:
+        f.write(content)
+
+def create_folder_structure(base_path):
+    folders = [
+        'configs',
+        'data/knowledge_base',
+        'data/experimental_data',
+        'data/experiments',
+        'data/experiment_runs',
+        'data/latex',
+        'data/papers',
+        'data/fewshot_examples',
+        'src',
+        'src/agents',
+        'src/models',
+        'src/prompts',
+        'src/prompts/idea_generation',
+        'src/prompts/novelty_evaluation',
+        'src/prompts/experiment_design',
+        'src/prompts/experiment_execution',
+        'src/prompts/data_analysis',
+        'src/prompts/reporting',
+        'src/prompts/review_generation',
+        'src/prompts/citation_management',
+        'src/prompts/misc',
+        'src/utils',
+        'src/memory',
+        'src/tests'
+    ]
+
+    files = {
+        'README.md': '',
+        'requirements.txt': '',
+        'configs/config.yaml': '',
+        'data/latex/template.tex': '',
+        'data/latex/references.bib': '',
+        'data/fewshot_examples/132_automated_relational.pdf': '',
+        'data/fewshot_examples/attention.pdf': '',
+        'data/fewshot_examples/2_carpe_diem.pdf': '',
+        'data/fewshot_examples/132_automated_relational.json': '',
+        'data/fewshot_examples/attention.json': '',
+        'data/fewshot_examples/2_carpe_diem.json': '',
+        'data/fewshot_examples/paper1.pdf': '',
+        'data/fewshot_examples/paper1_review.json': '',
+        'src/__init__.py': '',
+        'src/main.py': '',
+        'src/agents/__init__.py': '',
+        'src/agents/constants.py': '',
+        'src/agents/adaptive_orchestration_agent.py': '',
+        'src/agents/user_interaction_agent.py': '',
+        'src/agents/idea_generation_agent.py': '',
+        'src/agents/idea_reflection_agent.py': '',
+        'src/agents/knowledge_management_agent.py': '',
+        'src/agents/novelty_evaluation_agent.py': '',
+        'src/agents/experiment_planning_agent.py': '',
+        'src/agents/experiment_design_agent.py': '',
+        'src/agents/experiment_execution_agent.py': '',
+        'src/agents/data_analysis_agent.py': '',
+        'src/agents/plotting_agent.py': '',
+        'src/agents/documentation_agent.py': '',
+        'src/agents/reporting_agent.py': '',
+        'src/agents/citation_management_agent.py': '',
+        'src/agents/error_checking_agent.py': '',
+        'src/agents/document_compilation_agent.py': '',
+        'src/agents/peer_review_simulation_agent.py': '',
+        'src/agents/review_generation_agent.py': '',
+        'src/agents/review_reflection_agent.py': '',
+        'src/agents/meta_review_agent.py': '',
+        'src/agents/improvement_agent.py': '',
+        'src/agents/resource_management_agent.py': '',
+        'src/agents/adaptive_orchestration_agent.py': '',
+        'src/models/__init__.py': '',
+        'src/models/llm_provider.py': '',
+        'src/prompts/__init__.py': '',
+        'src/prompts/idea_generation/generation_prompt.txt': '',
+        'src/prompts/idea_generation/reflection_prompt.txt': '',
+        'src/prompts/novelty_evaluation/prompt.txt': '',
+        'src/prompts/novelty_evaluation/system_message.txt': '',
+        'src/prompts/experiment_design/design_prompt.txt': '',
+        'src/prompts/experiment_design/coder_prompt.txt': '',
+        'src/prompts/experiment_execution/failure_prompt.txt': '',
+        'src/prompts/experiment_execution/completion_prompt.txt': '',
+        'src/prompts/experiment_execution/timeout_prompt.txt': '',
+        'src/prompts/experiment_execution/plotting_prompt.txt': '',
+        'src/prompts/experiment_execution/notes_prompt.txt': '',
+        'src/prompts/data_analysis/data_analysis_prompt.txt': '',
+        'src/prompts/reporting/abstract_prompt.txt': '',
+        'src/prompts/reporting/section_prompt.txt': '',
+        'src/prompts/reporting/refinement_prompt.txt': '',
+        'src/prompts/reporting/second_refinement_prompt.txt': '',
+        'src/prompts/reporting/second_refinement_loop_prompt.txt': '',
+        'src/prompts/reporting/per_section_tips.txt': '',
+        'src/prompts/reporting/common_errors.txt': '',
+        'src/prompts/review_generation/generation_prompt.txt': '',
+        'src/prompts/review_generation/system_prompt_base.txt': '',
+        'src/prompts/review_generation/system_prompt_neg.txt': '',
+        'src/prompts/review_generation/system_prompt_pos.txt': '',
+        'src/prompts/review_generation/reflection_prompt.txt': '',
+        'src/prompts/review_generation/meta_system_prompt.txt': '',
+        'src/prompts/review_generation/improvement_prompt.txt': '',
+        'src/prompts/citation_management/system_message.txt': '',
+        'src/prompts/citation_management/first_prompt.txt': '',
+        'src/prompts/citation_management/second_prompt.txt': '',
+        'src/prompts/citation_management/aider_prompt_format.txt': '',
+        'src/prompts/misc/template_instructions.txt': '',
+        'src/utils/__init__.py': '',
+        'src/utils/helpers.py': '',
+        'src/utils/api_clients.py': '',
+        'src/utils/latex_utils.py': '',
+        'src/utils/paper_loader.py': '',
+        'src/utils/other_utils.py': '',
+        'src/memory/__init__.py': '',
+        'src/memory/memory_manager.py': '',
+        'src/tests/__init__.py': '',
+        'src/tests/test_agents.py': '',
+        'src/tests/test_workflow.py': '',
+        'Dockerfile': '',
+        '.gitignore': ''
+    }
+
+    for folder in folders:
+        folder_path = os.path.join(base_path, folder)
+        os.makedirs(folder_path, exist_ok=True)
+
+    for file, content in files.items():
+        file_path = os.path.join(base_path, file)
+        create_file(file_path, content)
+
+if __name__ == "__main__":
+    base_path = 'ai_scientist_langchain'
+    create_folder_structure(base_path)
