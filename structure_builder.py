@@ -104,7 +104,7 @@ DIRECTORY_STRUCTURE = [
 
 def create_file_structure(base_path: str, structure: List[str]) -> None:
     """Creates the directory and file structure based on the provided list."""
-    base_path = Path(base_path)
+    base_path = Path(base_path).resolve()
     for path_string in structure:
         current_path = base_path / path_string
         logger.info(f"Processing: {current_path}")
